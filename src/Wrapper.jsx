@@ -6,6 +6,7 @@ export default () => {
     <div className="container">
       <Paper >
         <Outlet />
+        
       </Paper>
     </div>
   );
