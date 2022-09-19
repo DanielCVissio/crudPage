@@ -30,8 +30,8 @@ export default () => {
         <form>
           <Grid >
             <TextField
+              error={username.length >=11}
               value={username}
-              error={username === ""}
               margin="dense" 
               label="Username"
               onChange={(e) => setUsername(e.target.value)}
@@ -42,7 +42,7 @@ export default () => {
           <Grid>
 
             <TextField
-              error={!email.includes('@')}
+              error={email.includes('@')}
               margin="dense" 
               label="Email"
               type={"email"}
@@ -55,7 +55,7 @@ export default () => {
 
           <Grid>
             <TextField
-              error={password === ""}
+              error={password.length >= 9}
               margin="dense" 
               label="Password"
               type={"password"}
@@ -68,14 +68,14 @@ export default () => {
 
           <Grid>
             <TextField
-              error={username === ""}
+              error={confirmPassword.length >= 9}
               margin="dense" 
               label="Confirm-Password"
               type={"password"}
               onChange={(e) => setConfirmPassword(e.target.value)}
               fullWidth
               value={confirmPassword}
-              helperText={confirmPassword === "" ? 'password is required' : ' '}
+              helperText={confirmPassword === "" ? ' is required' : ' '}
             />
           </Grid>
 
