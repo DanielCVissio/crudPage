@@ -13,14 +13,14 @@ export const CrudRouter = () => {
       <Route path="/" element={<App />}>
         
           (crudStatus === 'not-authenticated')
-          ?<Route path="/log" element={<NoAuth />} />
+          ?<Route path="/" element={<NoAuth />} />
           :<Route path="/crudPage" element={<CrudPage />} />
           
         
 
       </Route>
       
-        <Route path="/" element={ <Navigate to="/log"/>}/>
+        <Route path="/" element={ <Navigate to="/"/>}/>
         {/* JournalApp */}
     </Routes>
   )

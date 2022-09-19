@@ -1,9 +1,8 @@
-import { Google } from "@mui/icons-material";
-import { Button, ButtonGroup, TextField, Typography } from "@mui/material";
+
+import { Button, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import { AuthLayout } from "../layout/AuthLayout";
-import GoogleButton from "react-google-button";
 
 const loginFormFields = {
   loginUsername: "",
@@ -28,7 +27,6 @@ export default () => {
           <TextField
             label="Email"
             type="email"
-            placeholder="xxxx@xxx.com"
             fullWidth
             name="email"
             // value={email}
@@ -39,7 +37,6 @@ export default () => {
             margin="normal"                                             
             label="Password"
             type={"password"}
-            placeholder="******"
             fullWidth
             name="password"
             // value={ password }
@@ -48,26 +45,13 @@ export default () => {
 
           <Stack direction="row" spacing={19}>
             <Button
-              
               className="btnlog"
               variant="contained"
               fullWidth
               onClick={x}
               href="/crudPage"
             >
-              {" "}
-              Login{" "}
-            </Button>
-
-            <Button
-              
-              className="btnGo"
-              variant="contained"
-              color="secondary"
-              fullWidth
-            >
-              <Google />
-              <Typography>oogle</Typography>
+              Login
             </Button>
             </Stack>          
         </form>
