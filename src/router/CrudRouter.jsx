@@ -21,7 +21,6 @@ export const CrudRouter = () => {
       </Route>
       
         <Route path="/" element={ <Navigate to="/"/>}/>
-        {/* JournalApp */}
     </Routes>
   )
 }
