@@ -11,8 +11,11 @@ export default () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [responseHttp, setResponseHttp] = useState(false);
   const [responseErr, setResponseErr] = useState(false);
+  const [ disable, setDisable] = useState(true)
 
 
+  
+  
   const createAccount = (username, email, password, confirmPassword) => {
     if (password === confirmPassword && username.length <= 10 ) {
       console.log(
@@ -26,6 +29,12 @@ export default () => {
       resApi.then(() => {
         console.info("ok");
         setResponseHttp(true);
+        setResponseErr(false);
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+
       });
       
     } else {
@@ -34,6 +43,7 @@ export default () => {
       resApiE.then(() => {
         console.info("error");
         setResponseErr(true);
+        setResponseHttp(false);
       });
     };
 
@@ -58,7 +68,7 @@ export default () => {
           </Grid>
           <Grid>
             <TextField
-              error={(email.length >= 1) & !email.includes("@")}
+              error={email.length >= 50 || email.length >= 1 && !email.includes("@")  }
               margin="dense"
               label="Email"
               type={"email"}
@@ -96,20 +106,26 @@ export default () => {
           </Grid>
 
           <Grid>
-          {responseHttp && (
-              <SuccessAlert/>
-            )}
             <Button
+              on
+              className="btnCreate"
+              disabled = 
+              {disable && (username.length < 1 || username.length >= 10) || (confirmPassword.length >= 9 || confirmPassword.length < 1)
+                || (password.length >= 9 || password.length < 1) || (email.length < 1) || !email.includes("@")
+              }
               fullWidth
               variant="contained"
               onClick={() =>
                 createAccount(username, email, password, confirmPassword)
               }
-            >
+              >
               {" "}
               Create Account{" "}
             </Button>
           </Grid>
+              {responseHttp && (
+                  <SuccessAlert/>
+                )}
           {!!responseErr && (
                   <Stack sx={{ width: '100%' }} spacing={2}>
                   <Alert variant="filled" severity="error">
